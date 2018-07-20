@@ -1,4 +1,4 @@
-package br.com.madebygallo.pocsharedelementstransitions;
+package br.com.madebygallo.pocsharedelementstransitions.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import br.com.madebygallo.pocsharedelementstransitions.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * Created by RaqGallo on 20/07/2018
+ */
+
+public class FirstActivity extends AppCompatActivity {
 
     @BindView(R.id.dog_button)
     Button dogButton;
@@ -23,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_first);
         ButterKnife.bind(this);
 
         dogButton.setOnClickListener(onClickDogButton());
@@ -33,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, NextActivity.class);
+                Intent intent = new Intent(FirstActivity.this, NextActivity.class);
                 ActivityOptionsCompat optionsCompat = ActivityOptionsCompat
                         .makeSceneTransitionAnimation(
-                                MainActivity.this,
+                                FirstActivity.this,
                                 dogImage,
                                 ViewCompat.getTransitionName(dogImage));
                 startActivity(intent, optionsCompat.toBundle());
